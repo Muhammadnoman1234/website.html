@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noman Anwar - Web Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .about-section {
+            background-color: #f9f9f9;
+            padding: 3rem 0;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+
+        .form-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+        }
+
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .contact-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+
+        .submissions-container {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .submission-item {
+            padding: 1.5rem;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            background-color: #f8f9fa;
+            transition: transform 0.3s ease;
+        }
+
+        .submission-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .submission-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .submission-count {
+            background-color: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .clear-submissions {
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+
+        .clear-submissions:hover {
+            background-color: #c0392b;
+        }
+
+        .no-submissions {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .courses-section {
+            background-color: #fff;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .course-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+            background: #ffffff;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .course-title {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .course-price {
+            color: #27ae60;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .course-features {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .course-features li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .course-features li:before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+        }
+
+        .enroll-button {
+            background-color: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .enroll-button:hover {
+            background-color: #2980b9;
+        }
+
+        .profile-section {
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .hosting-section {
+            background-color: #fff;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .hosting-option {
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+            background: #f8f9fa;
+        }
+
+        .hosting-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .hosting-title {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+        }
+
+        .hosting-link {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .hosting-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="profile-section">
+            <img src="noman_profile.jpg" alt="Noman Anwar" class="profile-image">
+            <h1>Noman Anwar</h1>
+            <p>Next.js Web Developer</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="about-section">
+            <h2>About Me</h2>
+            <p>With 5 years of expertise in Next.js development, I specialize in creating dynamic and high-performance web applications. My experience includes building scalable solutions, implementing modern web technologies, and delivering exceptional user experiences.</p>
+        </section>
+
+        <section class="form-section">
+            <h2>Admission Form</h2>
+            <form id="admissionForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p class="contact-number">WhatsApp & Phone: 03490872984</p>
+            <a href="https://wa.me/923490872984" class="whatsapp-button" target="_blank">
+                Chat on WhatsApp
+            </a>
+            <p>Email: contact@nomananwar.com</p>
+        </div>
+
+        <div class="submissions-container">
+            <div class="submission-header">
+                <h3>Form Submissions</h3>
+                <div>
+                    <span class="submission-count">Total Submissions: <span id="submissionCount">0</span></span>
+                    <button class="clear-submissions" onclick="clearSubmissions()">Clear All</button>
+                </div>
+            </div>
+            <div id="submissionsList"></div>
+        </div>
+
+        <section class="courses-section">
+            <h2>Our Courses</h2>
+            
+            <div class="course-card">
+                <h3 class="course-title">Python Programming</h3>
+                <p>Master Python programming from basics to advanced concepts.</p>
+                <ul class="course-features">
+                    <li>Basic to Advanced Python Concepts</li>
+                    <li>Data Structures & Algorithms</li>
+                    <li>Web Development with Python</li>
+                    <li>Practical Projects</li>
+                    <li>Certificate on Completion</li>
+                </ul>
+                <div class="course-price">₹1000 Only</div>
+                <a href="#admissionForm" class="enroll-button">Enroll Now</a>
+            </div>
+
+            <div class="course-card">
+                <h3 class="course-title">Computer Fundamentals</h3>
+                <p>Complete computer training from basics to advanced applications.</p>
+                <ul class="course-features">
+                    <li>Computer Basics</li>
+                    <li>MS Office Suite</li>
+                    <li>Internet & Email</li>
+                    <li>Basic Troubleshooting</li>
+                    <li>Certificate on Completion</li>
+                </ul>
+                <div class="course-price">₹1000 Only</div>
+                <a href="#admissionForm" class="enroll-button">Enroll Now</a>
+            </div>
+
+            <div class="course-card">
+                <h3 class="course-title">Digital Marketing</h3>
+                <p>Learn modern digital marketing strategies and tools.</p>
+                <ul class="course-features">
+                    <li>SEO & SEM</li>
+                    <li>Social Media Marketing</li>
+                    <li>Content Marketing</li>
+                    <li>Email Marketing</li>
+                    <li>Certificate on Completion</li>
+                </ul>
+                <div class="course-price">₹1000 Only</div>
+                <a href="#admissionForm" class="enroll-button">Enroll Now</a>
+            </div>
+        </section>
+
+        <section class="hosting-section">
+            <h2>Free Hosting & Domain Options</h2>
+            
+            <div class="hosting-option">
+                <h3 class="hosting-title">GitHub Pages</h3>
+                <ul class="feature-list">
+                    <li>Free hosting for static websites</li>
+                    <li>Free subdomain (username.github.io)</li>
+                    <li>Unlimited bandwidth</li>
+                    <li>SSL certificate included</li>
+                    <li>Direct connection with GitHub repositories</li>
+                </ul>
+                <a href="https://pages.github.com/" target="_blank" class="hosting-link">Learn More</a>
+            </div>
+
+            <div class="hosting-option">
+                <h3 class="hosting-title">Netlify</h3>
+                <ul class="feature-list">
+                    <li>Free hosting with generous limits</li>
+                    <li>Free subdomain (site-name.netlify.app)</li>
+                    <li>Continuous deployment</li>
+                    <li>SSL certificate included</li>
+                    <li>Form handling functionality</li>
+                </ul>
+                <a href="https://www.netlify.com/" target="_blank" class="hosting-link">Learn More</a>
+            </div>
+
+            <div class="hosting-option">
+                <h3 class="hosting-title">Vercel</h3>
+                <ul class="feature-list">
+                    <li>Optimal for Next.js projects</li>
+                    <li>Free subdomain (project.vercel.app)</li>
+                    <li>Automatic deployments</li>
+                    <li>SSL certificate included</li>
+                    <li>Serverless functions support</li>
+                </ul>
+                <a href="https://vercel.com/" target="_blank" class="hosting-link">Learn More</a>
+            </div>
+
+            <div class="hosting-option">
+                <h3 class="hosting-title">Free Domain Options</h3>
+                <ul class="feature-list">
+                    <li>Freenom - Free domains (.tk, .ml, .ga, .cf, .gq)</li>
+                    <li>.Tech Domains - Free for students</li>
+                    <li>GitHub Student Pack - Free domains and hosting</li>
+                    <li>Cloudflare - Free DNS management</li>
+                    <li>Namecheap - Free for students (.me domain)</li>
+                </ul>
+                <a href="https://www.freenom.com/" target="_blank" class="hosting-link">Get Free Domain</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let submissions = [];
+
+        // Load submissions from localStorage when page loads
+        window.onload = function() {
+            const savedSubmissions = localStorage.getItem('formSubmissions');
+            if (savedSubmissions) {
+                submissions = JSON.parse(savedSubmissions);
+                displaySubmissions();
+            }
+        };
+
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            // Add to submissions array
+            submissions.unshift(formData);
+            
+            // Save to localStorage
+            localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+            
+            // Display submission
+            displaySubmissions();
+            
+            // Reset form
+            this.reset();
+            alert('Form submitted successfully! Check the submissions below.');
+        });
+
+        function displaySubmissions() {
+            const submissionsList = document.getElementById('submissionsList');
+            const submissionCount = document.getElementById('submissionCount');
+            
+            submissionCount.textContent = submissions.length;
+            
+            if (submissions.length === 0) {
+                submissionsList.innerHTML = '<div class="no-submissions">No submissions yet</div>';
+                return;
+            }
+
+            submissionsList.innerHTML = '';
+
+            submissions.forEach((submission, index) => {
+                const submissionElement = document.createElement('div');
+                submissionElement.className = 'submission-item';
+                submissionElement.innerHTML = `
+                    <h4>Submission #${submissions.length - index}</h4>
+                    <p><strong>Name:</strong> ${submission.name}</p>
+                    <p><strong>Email:</strong> ${submission.email}</p>
+                    <p><strong>Phone:</strong> ${submission.phone}</p>
+                    <p><strong>Message:</strong> ${submission.message}</p>
+                    <p><small>Submitted: ${submission.timestamp}</small></p>
+                `;
+                submissionsList.appendChild(submissionElement);
+            });
+        }
+
+        function clearSubmissions() {
+            if (confirm('Are you sure you want to clear all submissions?')) {
+                submissions = [];
+                localStorage.removeItem('formSubmissions');
+                displaySubmissions();
+            }
+        }
+    </script>
+</body>
+</html>
